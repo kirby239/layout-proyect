@@ -1,0 +1,89 @@
+<div class="example-container">
+  <div>
+    <mat-toolbar color="warn">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+        <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+      </button>
+      <div class="titulo_layout">
+        <span>Mi Portafolio Personal</span>
+      </div>
+      <span class="example-spacer"></span>
+      <div class="usuario_div">
+        <h4 class="usuario_h4">
+          <span class="usuario_layout">Kirby Damaso</span>
+        </h4>
+      </div>
+      <!--           <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+          </button> -->
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <button mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Cerrar Sesión</span>
+          </button>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+  </div>
+  <!---->
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #sidenav style="width: 28%" mode="push" opened="false">
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="sidenav.toggle()" [routerLink]="['home']" style="cursor: pointer">
+        <mat-icon>home</mat-icon>
+        <span>Menu Principal</span>
+      </button>
+      <!---Inicio Reportes-->
+      <button mat-menu-item (click)="showReportes = !showReportes" href="/reportes" style="cursor: pointer">
+        <mat-icon>shopping_cart</mat-icon>
+        <span class="full-width" *ngIf="isExpanded || isShowing">Reportes</span>
+      </button>
+      <mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded' : showReportes}" *ngIf="isShowing || isExpanded">
+          <button mat-menu-item (click)="sidenav.toggle()" [routerLink]="['/reportes/visor-1']"
+            style="cursor:pointer;">
+            <mat-icon>tune</mat-icon>
+            <span>visor-1</span>
+          </button>
+           <button mat-menu-item (click)="sidenav.toggle()" [routerLink]="['/reportes/visor-2']"
+            style="cursor: pointer;">
+            <mat-icon>tune</mat-icon>
+            <span>visor-2</span>
+          </button>
+          <button mat-menu-item (click)="sidenav.toggle()" [routerLink]="['/reportes/visor-3']"
+          style="cursor: pointer;">
+          <mat-icon>tune</mat-icon>
+          <span>visor-3</span>
+        </button>
+        </div>
+      </mat-list-item>
+      <!--Fin de Reportes-->
+      <!---Inicio Crud-->
+      <button mat-menu-item (click)="showExcel = !showExcel" href="/excel" style="cursor: pointer">
+        <mat-icon>shopping_cart</mat-icon>
+        <span class="full-width" *ngIf="isExpanded || isShowing">Excel</span>
+      </button>
+      <!---Fin Crudo-->
+      <!---Inicio Crud-->
+      <button mat-menu-item href="/producto" style="cursor: pointer">
+        <mat-icon>shopping_cart</mat-icon>
+        <span class="full-width" *ngIf="isExpanded || isShowing">Crud</span>
+      </button>
+      <!---Fin Crudo-->
+      <!---Inicio Crud dinamico-->
+      <button mat-menu-item href="/producto" style="cursor: pointer">
+        <mat-icon>shopping_cart</mat-icon>
+        <span class="full-width" *ngIf="isExpanded || isShowing">Crud Dinamico</span>
+      </button>
+      <!---Fin Crudo dinamico-->
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>

@@ -8,8 +8,10 @@
 
 # Node
 /node_modules
-npm-debug.log
-yarn-error.log
+
+# profiling files
+chrome-profiler-events*.json
+
 
 # IDEs and editors
 .idea/
@@ -29,14 +31,16 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
+npm-debug.log
+yarn-error.log
 testem.log
 /typings
 
 # System files
 .DS_Store
 Thumbs.db
+/.angular/cache
